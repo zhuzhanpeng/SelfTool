@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/DevTool/DevTool.iml" filepath="$PROJECT_DIR$/DevTool/DevTool.iml" />
       <module fileurl="file://$PROJECT_DIR$/SelfTool.iml" filepath="$PROJECT_DIR$/SelfTool.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
