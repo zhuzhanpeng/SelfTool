@@ -1,1 +1,2 @@
-include ':app',':DevTool'
+include ':app', ':DevTool', ':tdd'
+include ':library'

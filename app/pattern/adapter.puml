@@ -1,0 +1,26 @@
+@startuml
+
+title 适配器模式:把Adptee转换成客户端需要的接口
+
+
+class RecyclerVeiw{
+
+}
+class DataList{
+
+}
+interface Adapter{
+
+}
+class CustomAdapter{
+
+}
+note as N1
+  This note is <u>also</u>
+  <b><color:royalBlue>on several</color>
+  <s>words</s> lines
+end note
+RecyclerVeiw +- Adapter
+Adapter <|.. CustomAdapter
+
+@enduml
