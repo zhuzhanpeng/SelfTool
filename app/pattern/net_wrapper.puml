@@ -1,0 +1,14 @@
+@startuml
+
+partition 网络框架 {
+	:Retrfit;
+	detach
+	:中间层;
+	detach
+	:接口;
+	detach
+	:Client;
+}
+
+
+@enduml

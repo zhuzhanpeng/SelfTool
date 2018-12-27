@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.example.edison.selftool.adapter.RvAdapter;
 import com.example.edison.selftool.adapter.TestLVAdapter;
 import com.example.edison.selftool.bean.TestBean;
 
@@ -20,28 +21,19 @@ import onairm.com.devtool.CrashHandler;
 import onairm.com.devtool.TipToast;
 
 public class MainActivity extends AppCompatActivity {
-    List<TestBean> list;
-    TestLVAdapter adapter;
-    ListView listView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       CrashHandler.getInstance().init(getApplicationContext(),"");
+        CrashHandler.getInstance().init(getApplicationContext(), "");
         setContentView(R.layout.activity_main);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
-          listView=findViewById(R.id.listview);
-         list=new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            TestBean bean=new TestBean(i+"");
-            list.add(bean);
-        }
-
-         adapter=new TestLVAdapter(list);
-        listView.setAdapter(adapter);
+        MyRecyclerView recyclerView = findViewById(R.id.recyclerView);
+        RvAdapter adapter = new RvAdapter();
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
     }
 
 
-    public void test(View view) {
-        listView.requestLayout();
-    }
 }

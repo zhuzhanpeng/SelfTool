@@ -7,15 +7,8 @@
     tools:context="com.example.edison.selftool.MainActivity"
     android:orientation="vertical"
     >
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="测试"
-        android:onClick="test"
-        />
-    <com.example.edison.selftool.MyViewGroup
-        android:id="@+id/listview"
+    <com.example.edison.selftool.MyRecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></com.example.edison.selftool.MyViewGroup>
-
+        android:layout_height="match_parent"/>
 </LinearLayout>

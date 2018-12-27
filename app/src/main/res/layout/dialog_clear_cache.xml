@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center">
+
+
+    <RelativeLayout
+        android:layout_width="248dp"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:id="@+id/one_item_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:text="清除缓存"
+            android:layout_marginTop="28dp"
+            />
+
+        <TextView
+            android:id="@+id/tvOk"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:text="确认"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="14dp"
+            android:layout_marginBottom="11dp"
+            />
+        <TextView
+            android:id="@+id/tvCancel"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="14dp"
+            android:layout_marginBottom="11dp"
+            />
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>

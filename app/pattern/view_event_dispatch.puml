@@ -1,0 +1,99 @@
+@startuml
+scale 1500x1500
+|Activity|
+caption figure 1.2 test
+
+start
+|Activity|
+:dispatchTouchEvent;
+
+|#silver|ViewGroup|
+
+:dispatchTouchEvent;
+if(ACTION_DOWN)then(yes)
+    :clearTouchState;
+    if(!disallowIntercept)then(true)
+        :intercepted=onInterceptTouchEvent;
+    else(false)
+        :intercepted=false;
+    endif
+    :检查canceled;
+    if(!canceled&&!intercepted)then(yes)
+        while (hasChild ?) is (有)
+          :canViewReceivePointerEvents;
+          :handled = child.dispatchTouchEvent(transformedEvent);
+                 if(child is ?) then (ViewGroup)
+                    #yellow:递归ViewGroup的dispatchTouchEvent;
+                 else(View)
+                    |View|
+                    :dispatchTouchEvent;
+                    if(设置mOnTouchListener)then(true)
+                        :result=mOnTouchListener.onTouch;
+                    else(false)
+                        |View|
+                        :onTouchEvent(event);
+                        if(disable)then(true)
+                          :return true;
+                        endif
+
+                        if(clickable)then(yes)
+                            if(ACTION_DOWN)then(true)
+                            elseif(ACTION_MOVE)then(true)
+                            elseif(ACTION_UP)then(yes)
+                                :mPerformClick = new PerformClick();
+                                :performClick;
+                            endif
+                            :return true;
+                        else
+                            :return false;
+                        endif
+
+                    endif
+                    |ViewGroup|
+
+                 endif
+                 if(event分发了出去)
+                    :newTouchTarget = addTouchTarget(child, idBitsToAssign);
+                 endif
+        endwhile
+    endif
+    :handled = super.dispatchTouchEvent(transformedEvent);
+    #yellow:View的dispatchTouchEvent;
+else if(ACTION_MOVE)then(yes)
+    if(mFirstTouchTarget != null)then(yes)
+            if(!disallowIntercept)then(true)
+                :intercepted=onInterceptTouchEvent;
+            else(false)
+                :intercepted=false;
+            endif
+    endif
+    if(mFirstTouchTarget == null)then(true)
+        :handled = super.dispatchTouchEvent(transformedEvent);
+    else(false)
+        :handled = child.dispatchTouchEvent(transformedEvent);
+    endif
+else if(ACTION_UP)then(yes)
+    if(mFirstTouchTarget != null)then(yes)
+                if(!disallowIntercept)then(true)
+                    :intercepted=onInterceptTouchEvent;
+                else(false)
+                    :intercepted=false;
+                endif
+        endif
+        if(mFirstTouchTarget == null)then(true)
+            :handled = super.dispatchTouchEvent(transformedEvent);
+        else(false)
+            :handled = child.dispatchTouchEvent(transformedEvent);
+        endif
+else if(ACTION_CANCEL)then(yes)
+endif
+
+if(返回handled)then(true)
+    stop
+else (false)
+    |Activity|
+    :onTouchEvent;
+    stop
+    |ViewGroup|
+
+@enduml
