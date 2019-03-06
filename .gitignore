@@ -7,3 +7,5 @@
 /build
 /captures
 .externalNativeBuild
+/DevTool/build
+/app/build
